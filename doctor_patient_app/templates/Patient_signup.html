@@ -1,0 +1,156 @@
+<html>
+
+<head>
+    <title>Patient | Registration</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .container {
+            width: 800px;
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(252, 252, 252);
+            padding: 2rem;
+
+        }
+
+        .p-style {
+            color: rgb(68, 31, 255);
+            font-size: 20px;
+            text-align: left;
+            padding-left: 3rem;
+        }
+
+        .form-content {
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 5px;
+
+        }
+
+        .input-style>input[type=text],
+        .input-style>input[type=number],
+        .input-style>input[type=file] {
+            width: 500px;
+            height: 50px;
+            border-radius: 10px;
+            text-align: left;
+            padding-left: 1rem;
+            background-color: rgb(215, 254, 254);
+            border: none;
+            align-items: center;
+            text-align: center;
+            margin-left: 3rem;
+
+
+        }
+
+        .input-style>input[type=file] {
+            padding: 15px;
+        }
+
+        .input-style>input[type=checkbox],
+        .input-style>input[type=file] {
+            margin-left: 3rem;
+        }
+
+        .button-style {
+            width: 150px;
+            height: 50px;
+            border: none;
+            background-color: rgb(1, 187, 1);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 20px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+
+
+        }
+
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+
+        .error {
+            color: red;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .items-align {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .p-style1 {
+            width: 500px;
+            height: 50px;
+            color: rgb(2, 141, 2);
+            font-weight: bold;
+            font-size: 32px;
+            border: 1px solid;
+            border-radius: 10px;
+            padding-top: 20px;
+            background-color: rgb(138, 255, 138);
+            box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+    </style>
+</head>
+
+<body>
+    {% if message %}
+
+    <div class="items-align">
+        <p class="p-style1">{{message}}</p>
+    </div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        <h1>Patient Registration Form</h1>
+        {% if error_message %}
+        <div class="items-align">
+            <input type="checkbox" id="show-error" name="show_error">
+            <label for="show-error">
+                <p class="error">{{ error_message }}</p>
+            </label>
+        </div>
+        {% endif %}
+        {% csrf_token %}
+        <div class="container">
+            {% for field in form %}
+            <div class="form-content">
+                <p class="p-style">{{ field.label_tag }}</p>
+                <p class="input-style">{{ field }}</p>
+
+
+
+
+            </div>
+            {% endfor %}
+
+            <input class="button-style" type="submit" value="Register">
+        </div>
+    </form>
+    <p>Already Have An Account? click here</p><a href="{% url 'patient_login' %}">Login</a>
+</body>
+
+</html>

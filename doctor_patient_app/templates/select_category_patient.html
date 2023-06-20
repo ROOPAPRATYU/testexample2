@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <title>
+        Select User
+    </title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: blue;
+
+        }
+
+        .container {
+            width: 800px;
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(252, 252, 252);
+            padding: 2rem;
+
+        }
+
+        .form-content {
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 5px;
+            gap: 2rem;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .form-content>a {
+            text-decoration: none;
+            color: blue;
+            font-size: 24px;
+            border: 1px solid;
+            width: 100px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .form-content>a:hover {
+            color: rgb(55, 128, 0);
+            font-size: 32px;
+        }
+
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+
+        .p-style1 {
+            width: 600px;
+            height: 50px;
+            color: rgb(2, 141, 2);
+            font-weight: bold;
+            font-size: 20px;
+            border: 1px solid;
+            border-radius: 10px;
+            padding-top: 20px;
+            background-color: rgb(138, 255, 138);
+            box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p class="p-style1">{{message}}</p>
+        <h1>Select Category</h1>
+        <div class="form-content">
+            <a href="{% url 'Mental_Health' %}">Mental Health</a>
+            <a href="{% url 'Heart_Disease' %}">Heart Disease</a>
+            <a href="{% url 'Covid19' %}"> Covid19</a>
+            <a href="{% url 'Immunization' %}">Immunization</a>
+
+        </div>
+    </div>
+</body>
+
+</html>

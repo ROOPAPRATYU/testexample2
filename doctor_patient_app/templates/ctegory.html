@@ -1,0 +1,183 @@
+<html>
+
+<head>
+    <title>Doctor Registration</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .container {
+            width: 800px;
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(252, 252, 252);
+            padding: 2rem;
+
+        }
+
+        .p-style {
+            color: rgb(68, 31, 255);
+            font-size: 20px;
+            text-align: left;
+            padding-left: 3rem;
+        }
+
+        .form-content {
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 5px;
+
+        }
+
+        .input-style>input[type=text],
+        .input-style>input[type=number],
+        .input-style>input[type=file],
+        select,
+        .form-content>input {
+            width: 500px;
+            height: 50px;
+            border-radius: 10px;
+            text-align: left;
+            padding-left: 1rem;
+            background-color: rgb(215, 254, 254);
+            border: none;
+            align-items: center;
+            text-align: center;
+            margin-left: 3rem;
+
+
+        }
+
+        .input-style>input[type=file] {
+            padding: 15px;
+        }
+
+        .input-style>input[type=checkbox],
+        .input-style>input[type=file] {
+            margin-left: 3rem;
+        }
+
+        .button-style {
+            width: 150px;
+            height: 50px;
+            border: none;
+            background-color: rgb(1, 187, 1);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 20px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+
+
+        }
+
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+
+        .error {
+            color: red;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .items-align {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .p-style1 {
+            width: 200px;
+            height: 50px;
+            color: rgb(2, 141, 2);
+            font-weight: bold;
+            font-size: 20px;
+            border: 1px solid;
+            border-radius: 10px;
+            padding-top: 20px;
+            transition-property: width;
+            transition-duration: 5s;
+
+            background-color: rgb(138, 255, 138);
+            box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .p-style1:hover {
+            width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <form method="post" enctype="multipart/form-data" action="{% url 'categoryselect' %}">
+
+        <h1>Doctor Post Blog</h1>
+        {% csrf_token %}
+        <div class="container">
+            {% for field in form %}
+            <div class="form-content">
+                {% if field.name != "posted_by" %}
+                <label class="p-style" for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                </label>
+                {% endif %}
+                </label>
+                {% if field.name == "posted_by" %}
+                <input type="text" name="posted_by" value={{user_data}} required id="id_posted_by" hidden>
+
+                {% elif field.field.choices %}
+                <select name="{{ field.html_name }}">
+                    {% for choice in field.field.choices %}
+                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                    {% endfor %}
+                </select>
+
+                {% else %}
+                <p class="input-style">{{ field }}</p>
+
+                {% endif %}
+
+
+            </div>
+            {% endfor %}
+
+            <input class="button-style" type="submit" value="Submit">
+        </div>
+    </form>
+    <p class="p-style1">Already Available Posts</p>
+    <div class="container">
+        {% for post in data_for_user %}
+        <div class="form-content">
+            <p class="p-style1">Blog Posted At : {{post.post_created}}</p>
+            <p class="p-style">Title: {{ post.Title }}</p>
+            {% if post.post_image %}
+            <p class="p-style">Image: {{ post.post_image }} </p>
+            {% endif %}
+            <p class="p-style">Category: {{ post.Category }}</p>
+            <p class="p-style">Content: {{ post.post_content }}</p>
+            <p class="p-style">Summary: {{ post.Summury }}</p>
+
+        </div>
+        {% endfor %}
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<html>
+
+<head>
+    <title>
+        Data | Login
+    </title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .container {
+            width: 800px;
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(252, 252, 252);
+            padding: 2rem;
+
+        }
+
+
+
+        .form-content {
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 5px;
+            padding-left: 2rem;
+
+        }
+
+        .p-style1 {
+            width: 500px;
+            height: 50px;
+            color: rgb(2, 141, 2);
+            font-weight: bold;
+            font-size: 20px;
+            border: 1px solid;
+            border-radius: 10px;
+            padding-top: 20px;
+            text-align: center;
+            transition-property: width;
+            transition-duration: 5s;
+            background-color: rgb(138, 255, 138);
+            box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .p-style1:hover {
+            width: 600px;
+        }
+    </style>
+
+
+<body>
+    <h1>All Blogs By User</h1>
+    <div class="container">
+        {% for post in data_for_user %}
+        <div class="form-content">
+            <p class="p-style1">Blog Posted At : {{post.post_created}}</p>
+            <p class="p-style">Title: {{ post.Title }}</p>
+            {% if post.post_image %}
+            <p class="p-style">Image: {{ post.post_image }}</p>
+            {% endif %}
+            <p class="p-style">Category: {{ post.Category }}</p>
+            <p class="p-style">Content: {{ post.post_content }}</p>
+            <p class="p-style">Summary: {{ post.Summury }}</p>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <title>
+        Data | Login
+    </title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .container {
+            width: 800px;
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(252, 252, 252);
+            padding: 2rem;
+
+        }
+
+
+
+        .form-content {
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 5px;
+            padding-left: 2rem;
+
+        }
+
+        .p-style1 {
+            width: 500px;
+            height: 50px;
+            color: rgb(2, 141, 2);
+            font-weight: bold;
+            font-size: 32px;
+            border: 1px solid;
+            border-radius: 10px;
+            padding-top: 20px;
+            text-align: center;
+            background-color: rgb(138, 255, 138);
+            box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+    </style>
+</head>
+
+<body>
+    <p class="p-style1">{{message}}</p>
+    <div class="container">
+        {% for doctor in data_for_user %}
+        <div class="form-content">
+            <p>First Name: {{ doctor.First_Name }}</p>
+            <p>Last Name: {{ doctor.First_Name }}</p>
+            <p>Profile_Pic: {{ doctor.Profile_Pic}}</p>
+            <p>Username: {{ doctor.Username }}</p>
+            <p>Profile_Pic: {{ doctor.Profile_Pic }}</p>
+            <p>Email_Id: {{ doctor.Email_Id }}</p>
+            <p>Password: {{ doctor.Password }}</p>
+            <p>Confirm_Password: {{ doctor.Confirm_Password }}</p>
+            <p>Address_line1: {{ doctor.Address_line1 }}</p>
+            <p>City: {{ doctor.City}}</p>
+            <p>State: {{ doctor.State}}</p>
+            <p>Pincode: {{ doctor.Pincode }}</p>
+        </div>
+
+
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>
